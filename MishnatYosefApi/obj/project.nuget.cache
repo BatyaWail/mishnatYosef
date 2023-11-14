@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "uocTZ3xI6voG/KpuRVFISfPoqcGWPJvQfHacPbyG3+Ff7owVM+mFle3rohw4YVYAkdSF/qHOuGS6aS9Z/JUvrQ==",
+  "success": true,
+  "projectFilePath": "Y:\\Groups\\Group_3\\ווייל  בתיה\\דוטנט\\my api\\MishnatYosefApi\\MishnatYosefApi\\MishnatYosefApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hitmachut\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\hitmachut\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\hitmachut\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\hitmachut\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\hitmachut\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\hitmachut\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
