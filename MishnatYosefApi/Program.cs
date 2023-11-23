@@ -1,3 +1,5 @@
+using MishnatYosefApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,7 +17,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+builder.Services.AddSingleton<DataContext>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

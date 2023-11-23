@@ -9,43 +9,42 @@ namespace MishnatYosefApi.Controllers
     [ApiController]
     public class DistributionStationController : ControllerBase
     {
-        static List<DistributionStation> distributionStations = new List<DistributionStation>()
+        private readonly DataContext _data;
+        public DistributionStationController(DataContext data)
         {
-            new DistributionStation(0,"breslev 11-9 bb",30,DayOfWeek.Tuesday),
-            new DistributionStation(1,"tifrach",10,DayOfWeek.Saturday),
-            new DistributionStation(2,"AAAA",40,DayOfWeek.Monday),
-        };
+            _data = data;
+        }
         // GET: api/<DistributionStation>
         [HttpGet]
         public IEnumerable<DistributionStation> GetList()
         {
-            return distributionStations;
+            return _data.distributionStations;
         }
 
         // GET api/<DistributionStation>/5
         [HttpGet("{id}")]
         public DistributionStation GetValue(int id)
         {
-            return distributionStations.Find(x => x.Id == id);
+            return _data.distributionStations.Find(x => x.Id == id);
         }
         [HttpGet("{day}/days")]
         public IEnumerable<DistributionStation> GetByDay(DayOfWeek day)
         {
-            return distributionStations.FindAll(x => x.Day == day);
+            return _data.distributionStations.FindAll(x => x.Day == day);
         }
 
         // POST api/<DistributionStation>
         [HttpPost]
         public void Post([FromBody] DistributionStation value)
         {
-            distributionStations.Add(value);
+            _data.distributionStations.Add(value);
         }
 
         // PUT api/<DistributionStation>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] DistributionStation value)
         {
-            distributionStations[distributionStations
+            _data.distributionStations[_data.distributionStations
                 .FindIndex(x=>x.Id == id)] = value;
         }
 
@@ -53,7 +52,7 @@ namespace MishnatYosefApi.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            distributionStations.Remove(distributionStations.Find(x => x.Id == id));
+            _data.distributionStations.Remove(_data.distributionStations.Find(x => x.Id == id));
         }
     }
 }

@@ -10,45 +10,52 @@ namespace MishnatYosefApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        static List<Product> products = new List<Product>()
+        private readonly DataContext _data;
+        public ProductController(DataContext data)
         {
-            new Product(0,"oil","A",4.5),
-            new Product(1,"chocolat","B",6),
-            new Product(2,"eges","A",25)
-        };
+            _data = data;
+        }
         // GET: api/<ProductController>
         [HttpGet]
         public IEnumerable<Product> Get()
         {
-            return products;
+            return _data.products;
         }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public Product Get(int id)
+        public ActionResult Get(int id)
         {
-            return products.Find(x => x.Id == id);
+            Product temp= _data.products.Find(x => x.Id == id);
+            if (temp == null)
+                return NotFound();
+            return Ok( temp);
         }
 
         // POST api/<ProductController>
         [HttpPost]
         public void Post([FromBody] Product value)
         {
-            products.Add(value);
+            _data.products.Add(value);
         }
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Product value)
+        public ActionResult Put(int id, [FromBody] Product value)
         {
-            products[products.FindIndex(x => x.Id == id)] = value;
+            //products[products.FindIndex(x => x.Id == id)] = value;
+            int x = _data.products.FindIndex(x => x.Id == id);
+            if (x<0)
+                return NotFound();
+            _data.products[x] = value;
+            return Ok();
         }
 
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            products.Remove(products.Find(x => x.Id == id));
+            _data.products.Remove(_data.products.Find(x => x.Id == id));
         }
     }
 }

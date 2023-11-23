@@ -9,46 +9,44 @@ namespace MishnatYosefApi.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        static List<Client> clients = new List<Client>()
+        private readonly DataContext _data;
+        public ClientController(DataContext data)
         {
-            new Client(0,"batya wail","0504119712","breslev 18 bney brak"),
-            new Client(1,"yeudit cohen","0504116146","chagai 3 bney brak"),
-            new Client(2,"batya","0504119785","ezra 5 bney brak"),
-            new Client(3,"wais yosi","035702504","tifrach")
-        };
+            _data = data;
+        }
         // GET: api/<ClientController>
         [HttpGet]
         public IEnumerable<Client> GetList()
         {
-            return clients;
+            return _data.clients;
         }
         // GET api/<ClientController>/5
         [HttpGet("{id}")]
         public Client GetValue(int id)
         {
-            return clients.Find(x=>x.Id==id);
+            return _data.clients.Find(x=>x.Id==id);
         }
 
         // POST api/<ClientController>
         [HttpPost]
         public void Post([FromBody] Client value)
         {
-            clients.Add(value);
+            _data.clients.Add(value);
         }
 
         // PUT api/<ClientController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Client value)
         {
-            int i=clients.FindIndex(x=>x.Id == id);
-            clients[i]=value;
+            int i=_data.clients.FindIndex(x=>x.Id == id);
+            _data.clients[i]=value;
         }
 
         // DELETE api/<ClientController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            clients.Remove(clients.Find(x=>x.Id==id));
+           _data.clients.Remove(_data.clients.Find(x=>x.Id==id));
         }
     }
 }
